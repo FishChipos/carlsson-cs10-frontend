@@ -8,8 +8,6 @@ import Link from 'next/link'
 import Button from '../button'
 import TextField from '../textfield'
 
-import { apiUrl } from '../api/api'
-
 export default function Register() {
     const router = useRouter()
 
@@ -19,7 +17,7 @@ export default function Register() {
         const formData = new FormData(event.currentTarget)
 
         axios
-            .post(`${apiUrl}/user/register`, {
+            .post(`${process.env.NEXT_PUBLIC_API_URL}/user/register`, {
                 name: formData.get('name'),
                 username: formData.get('username'),
                 email: formData.get('email'),

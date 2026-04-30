@@ -9,8 +9,6 @@ import Link from 'next/link'
 import Button from '../button'
 import { Item, ItemCard } from './itemcard'
 
-import { apiUrl } from '../api/api'
-
 export default function Dashboard() {
     const cookies = useCookies()
     const router = useRouter()
@@ -18,7 +16,7 @@ export default function Dashboard() {
 
     useEffect(() => {
         axios
-            .get(`${apiUrl}/items`)
+            .get(`${process.env.NEXT_PUBLIC_API_URL}/items`)
             .then(res => {
                 setItems(res.data['payload'])
             })

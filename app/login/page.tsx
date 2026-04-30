@@ -9,8 +9,6 @@ import Link from 'next/link'
 import Button from '../button'
 import TextField from '../textfield'
 
-import { apiUrl } from '../api/api'
-
 export default function Login() {
     const router = useRouter()
     const cookies = useCookies()
@@ -21,7 +19,7 @@ export default function Login() {
         const formData = new FormData(event.currentTarget)
 
         axios
-            .post(`${apiUrl}/auth/login`, {
+            .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
                 email: formData.get('email'),
                 password: formData.get('password'),
             })
